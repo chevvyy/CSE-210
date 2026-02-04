@@ -13,29 +13,43 @@ class Program
             Console.WriteLine("  1. Start breathing activity");
             Console.WriteLine("  2. Start reflection activity");
             Console.WriteLine("  3. Start listing activity");
-            Console.WriteLine("  4. Start custom activity");
-            Console.WriteLine("  5. Quit");
+            Console.WriteLine("  4. Custom activity: Run");
+            Console.WriteLine("  5. Custom activity: Edit");
+            Console.WriteLine("  6. Custom activity: Reset");
+            Console.WriteLine("  7. Quit");
             Console.Write("Select a choice from the menu: ");
 
             string choice = Console.ReadLine() ?? "";
 
-            Activity activity = choice switch
+            switch (choice)
             {
-                "1" => new BreathingActivity(),
-                "2" => new ReflectionActivity(),
-                "3" => new ListingActivity(),
-                "4" => new CustomActivity(),
-                "5" => null,
-                _ => null
-            };
+                case "1":
+                    new BreathingActivity().Start();
+                    break;
 
-            if (choice == "5")
-            {
-                running = false;
-            }
-            else if (activity != null)
-            {
-                activity.Start();
+                case "2":
+                    new ReflectionActivity().Start();
+                    break;
+
+                case "3":
+                    new ListingActivity().Start();
+                    break;
+
+                case "4":
+                    CustomActivity.RunFromSaved();
+                    break;
+
+                case "5":
+                    CustomActivity.EditAndSave();
+                    break;
+
+                case "6":
+                    CustomActivity.ResetAndCreate();
+                    break;
+
+                case "7":
+                    running = false;
+                    break;
             }
         }
     }
