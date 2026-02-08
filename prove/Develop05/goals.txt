@@ -1,0 +1,6 @@
+1030
+2|30|1500
+Simple|W05 Prove|complete W05 Prove assignment for School|250|False
+Eternal|Pray|pray everyday at the start of the day|50
+Checklist|Pushups|complete pushups needed everyday|5|50|40|6
+Eternal|Cheat for Level Testing|NA|1000
