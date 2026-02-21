@@ -7,13 +7,19 @@ namespace LaserOrderCalculator
     internal sealed class TokenBag
     {
         private readonly Dictionary<string, string> _kv;
-        public TokenBag(Dictionary<string, string> kv) => _kv = kv;
+
+        public TokenBag(Dictionary<string, string> kv)
+        {
+            _kv = kv ?? throw new ArgumentNullException(nameof(kv));
+        }
 
         public int GetInt(string key, int fallback)
         {
             if (_kv.TryGetValue(key, out var v) &&
                 int.TryParse(v, NumberStyles.Integer, CultureInfo.InvariantCulture, out var n))
+            {
                 return n;
+            }
 
             return fallback;
         }
@@ -22,7 +28,9 @@ namespace LaserOrderCalculator
         {
             if (_kv.TryGetValue(key, out var v) &&
                 decimal.TryParse(v, NumberStyles.Number, CultureInfo.InvariantCulture, out var d))
+            {
                 return d;
+            }
 
             return fallback;
         }
@@ -45,7 +53,9 @@ namespace LaserOrderCalculator
                 var val = p[(eq + 1)..].Trim();
 
                 if (!string.IsNullOrWhiteSpace(key))
+                {
                     dict[key] = val;
+                }
             }
 
             return new TokenBag(dict);

@@ -7,7 +7,8 @@ namespace LaserOrderCalculator
         public void ParseItems(Order order)
         {
             if (order == null) throw new ArgumentNullException(nameof(order));
-            order.Items.Clear();
+
+            order.ClearItems();
 
             var parts = (order.Raw ?? "")
                 .Split(';', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);

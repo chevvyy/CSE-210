@@ -11,5 +11,6 @@ namespace LaserOrderCalculator
         }
 
         public override string Category() => "RAIL";
+        public override bool IsInteresting() => true;
     }
 }

@@ -20,7 +20,13 @@ namespace LaserOrderCalculator
             foreach (var row in rows)
             {
                 if (row.Count < 2) continue;
-                orders.Add(new Order(row[0], row[1]));
+
+                var id = row[0];
+                var raw = row[1];
+
+                if (string.IsNullOrWhiteSpace(id)) continue;
+
+                orders.Add(new Order(id, raw));
             }
 
             return orders;
@@ -34,7 +40,12 @@ namespace LaserOrderCalculator
             foreach (var row in rows)
             {
                 if (row.Count == 0) continue;
-                set.Add(row[0]);
+
+                var id = row[0];
+                if (!string.IsNullOrWhiteSpace(id))
+                {
+                    set.Add(id);
+                }
             }
 
             return set;

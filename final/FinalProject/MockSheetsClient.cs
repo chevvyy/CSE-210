@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
-
-// Temporary for me but final for the project
-
+ //jjust for the project, will be replaced for my own use
 namespace LaserOrderCalculator
 {
     public sealed class MockSheetsClient : ISheetsClient
@@ -18,7 +16,7 @@ namespace LaserOrderCalculator
                 new() { "1004", "STANDARD|qty=3|w=2|h=8" },
             },
 
-            // Completed order IDs
+            // Completed order IDs (pretend “last 3 weeks”)
             ["Completed!A2:A"] = new List<List<string>>
             {
                 new() { "1004" }
@@ -28,7 +26,9 @@ namespace LaserOrderCalculator
         public List<List<string>> Read(string rangeA1)
         {
             if (_data.TryGetValue(rangeA1, out var rows))
+            {
                 return rows;
+            }
 
             return new List<List<string>>();
         }

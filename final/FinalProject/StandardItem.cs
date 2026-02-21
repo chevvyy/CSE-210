@@ -11,5 +11,6 @@ namespace LaserOrderCalculator
         }
 
         public override string Category() => "STANDARD";
+        // IsInteresting stays false (base behavior)
     }
 }

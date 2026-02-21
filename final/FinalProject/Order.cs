@@ -9,7 +9,8 @@ namespace LaserOrderCalculator
 
         public string Id { get; }
         public string Raw { get; }
-        public List<OrderItem> Items => _items;
+
+        public IReadOnlyList<OrderItem> Items => _items;
 
         public Order(string id, string raw)
         {
@@ -21,6 +22,11 @@ namespace LaserOrderCalculator
         {
             if (item == null) throw new ArgumentNullException(nameof(item));
             _items.Add(item);
+        }
+
+        public void ClearItems()
+        {
+            _items.Clear();
         }
     }
 }

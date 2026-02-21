@@ -27,6 +27,9 @@ namespace LaserOrderCalculator
         public abstract void Parse(string raw);
         public abstract string Category();
 
+        // Polymorphism: default false; interesting items override to true
+        public virtual bool IsInteresting() => false;
+
         public decimal AreaSqIn() => WidthIn * HeightIn;
     }
 }
